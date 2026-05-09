@@ -1,0 +1,6 @@
+{
+  "name": "场景备忘录",
+  "description": "一个多场景、分角色的出行和居家备忘录应用，支持自定义场景、任务进度追踪及离线存储。",
+  "requestFramePermissions": [],
+  "majorCapabilities": []
+}
