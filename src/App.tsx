@@ -226,7 +226,7 @@ export default function App() {
                     </>
                   )}
                 </div>
-                <p className="text-sm text-gray-500 mt-2 font-medium">点击卡片进入对应场景清单</p>
+
               </div>
 
               {/* Category Grid */}
@@ -255,7 +255,7 @@ export default function App() {
                           <IconComp size={28} />
                         </div>
                         <div className="flex-1 min-w-0">
-                          <div className="flex items-center gap-2 mb-0.5">
+                          <div className="flex items-center gap-2">
                             {isEditing ? (
                               <input 
                                 autoFocus 
@@ -295,11 +295,10 @@ export default function App() {
                               </>
                             )}
                           </div>
-                          <p className="text-xs text-gray-400 font-medium truncate">{cat.desc}</p>
                         </div>
                       </div>
                       
-                      <div className="text-right flex flex-col items-end shrink-0 pl-4 border-l border-gray-50">
+                      <div className="text-right flex flex-col items-end shrink-0 pl-6 border-l border-gray-50">
                         {stats.total > 0 ? (
                           <>
                             <span className="text-base font-bold text-gray-700">{stats.completed}/{stats.total}</span>
@@ -343,25 +342,25 @@ export default function App() {
             >
               {/* Detail Header */}
               <div className="bg-white rounded-b-[32px] shadow-md z-20 shrink-0 overflow-hidden">
-                <div className={`pt-16 pb-6 px-6 ${currentCategory.color}`}>
-                  <div className="flex justify-between items-center mb-6">
+                <div className={`pt-10 pb-4 px-6 ${currentCategory.color}`}>
+                  <div className="flex justify-between items-center mb-4">
                     <button 
                       onClick={() => setActiveTab('home')} 
-                      className="p-3 rounded-2xl bg-white/80 text-gray-800 shadow-sm transition-transform active:scale-95"
+                      className="p-2 rounded-2xl bg-white/80 text-gray-800 shadow-sm transition-transform active:scale-95"
                     >
-                      <ChevronLeft size={24} />
+                      <ChevronLeft size={20} />
                     </button>
-                    <div className={`p-3 rounded-2xl bg-white/90 ${currentCategory.textColor} shadow-sm`}>
-                      {React.createElement(ICON_MAP[currentCategory.iconName] || ListPlus, { size: 24 })}
+                    <div className={`p-2 rounded-2xl bg-white/90 ${currentCategory.textColor} shadow-sm`}>
+                      {React.createElement(ICON_MAP[currentCategory.iconName] || ListPlus, { size: 20 })}
                     </div>
                   </div>
                   
-                  <h1 className="text-3xl font-black text-gray-900 tracking-tight">{currentCategory.name}</h1>
+                  <h1 className="text-2xl font-black text-gray-900 tracking-tight">{currentCategory.name}</h1>
                   
-                  <div className="mt-6 flex justify-between text-sm text-gray-600 font-bold items-center">
+                  <div className="mt-4 flex justify-between text-sm text-gray-600 font-bold items-center">
                     <div className="flex gap-3 items-center">
                       <span className="bg-white/60 px-3 py-1 rounded-full text-xs">
-                        精度: {categoryTasks.length === 0 ? 0 : Math.round((completedTasksCount / categoryTasks.length) * 100)}%
+                        进度: {categoryTasks.length === 0 ? 0 : Math.round((completedTasksCount / categoryTasks.length) * 100)}%
                       </span>
                       {completedTasksCount > 0 && (
                         <button 
@@ -376,7 +375,7 @@ export default function App() {
                     <span className="text-gray-500">{completedTasksCount}/{categoryTasks.length} 项</span>
                   </div>
                   
-                  <div className="mt-4 h-2.5 bg-white/40 rounded-full overflow-hidden">
+                  <div className="mt-3 h-2 bg-white/40 rounded-full overflow-hidden">
                     <motion.div 
                       initial={{ width: 0 }}
                       animate={{ width: `${categoryTasks.length === 0 ? 0 : (completedTasksCount / categoryTasks.length) * 100}%` }}
@@ -386,16 +385,15 @@ export default function App() {
                 </div>
 
                 {/* Sub-tabs Selection for Addition */}
-                <div className="px-4 py-4 flex overflow-x-auto gap-2 items-center no-scrollbar bg-white">
-                  <span className="text-[10px] font-black text-gray-400 uppercase tracking-widest whitespace-nowrap pl-2">添加到:</span>
+                <div className="px-2 py-3 flex w-full gap-1 items-center bg-white">
                   {SUB_CATEGORIES.map(sub => (
                     <button 
                       key={sub.id} 
                       onClick={() => setActiveSubTab(sub.id)} 
-                      className={`whitespace-nowrap px-5 py-2 rounded-2xl text-sm font-bold transition-all ${
+                      className={`flex-1 text-center py-2.5 rounded-xl text-[13px] font-bold transition-all ${
                         activeSubTab === sub.id 
-                          ? `${currentCategory.activeBg} text-white shadow-lg shadow-blue-200/50` 
-                          : 'bg-gray-50 text-gray-400 hover:bg-gray-100'
+                          ? `${currentCategory.activeBg} text-white shadow-md` 
+                          : 'bg-gray-50 text-gray-400'
                       }`}
                     >
                       {sub.name}
