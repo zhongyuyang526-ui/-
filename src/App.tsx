@@ -251,9 +251,6 @@ export default function App() {
                       className="relative overflow-hidden w-full p-5 rounded-3xl cursor-grab active:cursor-grabbing bg-white border border-gray-100 shadow-sm flex items-center justify-between group transition-all hover:shadow-md"
                     >
                       <div className="flex items-center gap-4 flex-1 min-w-0">
-                        <div className="text-gray-300 shrink-0 cursor-row-resize opacity-0 group-hover:opacity-100 transition-opacity">
-                          <GripVertical size={20} />
-                        </div>
                         <div className={`p-4 rounded-2xl ${cat.iconBg} ${cat.textColor} shrink-0 shadow-xs`}>
                           <IconComp size={28} />
                         </div>
